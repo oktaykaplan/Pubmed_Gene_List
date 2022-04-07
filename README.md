@@ -77,4 +77,5 @@ p1 <- p +
 p1 + geom_text_repel(aes(label=ifelse((pubmed_genes$number> 25000), gene_name, "")))
 
 ```
-[Rplot.pdf](https://github.com/oktaykaplan/Pubmed_Gene_List/files/8443138/Rplot.pdf)
+
+![Rplot01](https://user-images.githubusercontent.com/12661265/162208223-8ec1d69c-57e5-4f7d-9b52-117f928eccfb.png)
