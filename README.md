@@ -24,8 +24,7 @@ allgenes <- humangenes1$Locus
 pubmed_data <- data.frame()
 ```
 
-#Start the process.
-#This process depends on the speed of internet.
+**Start the downloading the number of arricles per human gene. This process depends on the speed of internet.**
 
 ```
 for(i in allgenes){
@@ -42,7 +41,7 @@ for(i in allgenes){
 ```
 write.csv(pubmed_data1, "/Users/Desktop/pubmed_data06.04.2022", row.names = FALSE)
 ```
-**Create a plot **
+
 **Load the following packages**
 
 ```
@@ -93,6 +92,3 @@ p3 <- p2  %>%
 #save the plot
 htmlwidgets::saveWidget(as_widget(p3), "index.html")
 ```
-
-
-
