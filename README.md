@@ -42,3 +42,39 @@ for(i in allgenes){
 ```
 write.csv(pubmed_data1, "/Users/Desktop/pubmed_data06.04.2022", row.names = FALSE)
 ```
+**Create a plot **
+**Load the following packages**
+
+```
+library(janitor)
+library(cowplot)
+library(tidyverse)
+library(ggrepel)
+```
+
+**Generate the plot**
+
+```
+p <- ggplot(pubmed_genes, aes(x= fct_reorder(gene_name, number), y =number),
+            alpha = 0.02 )+
+  geom_point() +
+  ylim(0, 30000)+
+  geom_point(color = ifelse(pubmed_genes$number> 25000, "red", "black"))+
+  theme_cowplot(font_size = 12)
+```
+
+**Label the X and Y axis**
+```
+p1 <- p + 
+  theme(axis.text.x=element_blank(),
+        axis.ticks.x = element_blank())+
+  labs(x = "Human Genes", y = "Number of Articles", 
+       title = "Number of Articles for each human gene")
+```
+**Mark gene names with different colot and label them**
+
+```
+p1 + geom_text_repel(aes(label=ifelse((pubmed_genes$number> 25000), gene_name, "")))
+
+```
+[Rplot.pdf](https://github.com/oktaykaplan/Pubmed_Gene_List/files/8443138/Rplot.pdf)
