@@ -80,6 +80,5 @@ p1 + geom_text_repel(aes(label=ifelse((pubmed_genes$number> 25000), gene_name, "
 
 ![Rplot01](https://user-images.githubusercontent.com/12661265/162208223-8ec1d69c-57e5-4f7d-9b52-117f928eccfb.png)
 
-![Rplot02](https://user-images.githubusercontent.com/12661265/162212156-15b8dd4f-de9f-4c38-8230-f62eb27c27d6.png)
 
 
