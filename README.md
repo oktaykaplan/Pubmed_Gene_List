@@ -32,7 +32,7 @@ for(i in allgenes){
   page <- read_html(link)
   gene_name <- i 
   number <- page %>% html_nodes("span.value") %>% html_text()
-  pubmed_data<- if(length(number) > 0)  {rbind(pubmed_data, data.frame(gene_name, number, stringsAsFactors = FALSE)) }
+  pubmed_data<- rbind(pubmed_data, data.frame(gene_name, number, stringsAsFactors = FALSE))
 }
 ```
 
