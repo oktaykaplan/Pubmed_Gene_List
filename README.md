@@ -74,12 +74,25 @@ p1 <- p +
 **Mark gene names with different colot and label them**
 
 ```
-p1 + geom_text_repel(aes(label=ifelse((pubmed_genes$number> 25000), gene_name, "")))
+p2 <- p1 + geom_text_repel(aes(label=ifelse((pubmed_genes$number> 25000), gene_name, "")))
 
 ```
 
 ![Rplot01](https://user-images.githubusercontent.com/12661265/162208223-8ec1d69c-57e5-4f7d-9b52-117f928eccfb.png)
 
-![Rplot03](https://user-images.githubusercontent.com/12661265/162214113-a171b92e-79cc-430b-bff9-c7aacb13914a.png)
+
+**Create the interactive plot**
+
+```
+library(plotly)
+library(htmlwidgets)
+library(antaresViz)
+
+p3 <- p2  %>%
+  ggplotly(tooltip = c("x", "y"))
+#save the plot
+htmlwidgets::saveWidget(as_widget(p3), "index.html")
+```
+
 
 
