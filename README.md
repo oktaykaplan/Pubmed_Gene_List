@@ -45,7 +45,6 @@ write.csv(pubmed_data1, "/Users/Desktop/pubmed_data06.04.2022", row.names = FALS
 **Load the following packages**
 
 ```
-library(janitor)
 library(cowplot)
 library(tidyverse)
 library(ggrepel)
@@ -85,7 +84,7 @@ p2 <- p1 + geom_text_repel(aes(label=ifelse((pubmed_genes$number> 25000), gene_n
 ```
 library(plotly)
 library(htmlwidgets)
-library(antaresViz)
+
 
 p3 <- p2  %>%
   ggplotly(tooltip = c("x", "y"))
