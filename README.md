@@ -69,7 +69,7 @@ p1 <- p +
   labs(x = "Human Genes", y = "Number of Articles", 
        title = "Number of Articles for each human gene")
 ```
-**Mark gene names with different colot and label them**
+**Mark gene names with different color and label them**
 
 ```
 p2 <- p1 + geom_text_repel(aes(label=ifelse((pubmed_genes$number> 25000), gene_name, "")))
