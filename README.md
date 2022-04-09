@@ -31,7 +31,7 @@ for(i in genelist){
   link <- paste0("https://pubmed.ncbi.nlm.nih.gov/?term=", i,"&sort=date")
   page <- read_html(link)
   gene_name <- i 
-  number <- page %>% html_nodes(".results-amount") %>% html_text() %>% 
+  number <- page %>% html_nodes("span.value") %>% html_text() %>% 
     replace(!nzchar(number), NA)
   pubmed_data2<- rbind(pubmed_data2, data.frame(gene_name, number, stringsAsFactors = FALSE))
 }
