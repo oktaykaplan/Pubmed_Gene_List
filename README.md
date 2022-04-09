@@ -2,7 +2,7 @@
 
 **Load the following packages**
 
-```
+``` Python
 library(rvest)
 library(dplyr)
 library(readr)
