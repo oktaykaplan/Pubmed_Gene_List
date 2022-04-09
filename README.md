@@ -24,7 +24,7 @@ allgenes <- humangenes1$Locus
 pubmed_data <- data.frame()
 ```
 
-**Start the downloading the number of arricles per human gene. This process depends on the speed of internet.**
+**Start downloading the number of articles per human gene. This process depends on the speed of the internet.**
 
 ```Java
 for(i in genelist){
