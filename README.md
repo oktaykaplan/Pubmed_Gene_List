@@ -16,7 +16,7 @@ colnames(humangenes)
 ```
 
 **Select the genes and make them unique**
-```
+```Java
 humangenes1 <- humangenes %>%
   dplyr::select(Locus)%>%
   unique()
@@ -26,25 +26,27 @@ pubmed_data <- data.frame()
 
 **Start the downloading the number of arricles per human gene. This process depends on the speed of internet.**
 
-```
-for(i in allgenes){
+```Java
+for(i in genelist){
   link <- paste0("https://pubmed.ncbi.nlm.nih.gov/?term=", i,"&sort=date")
   page <- read_html(link)
   gene_name <- i 
-  number <- page %>% html_nodes("span.value") %>% html_text()
-  pubmed_data<- rbind(pubmed_data, data.frame(gene_name, number, stringsAsFactors = FALSE))
+  number <- page %>% html_nodes(".results-amount") %>% html_text(trim=TRUE) %>% 
+    replace(!nzchar(number), NA) %>%
+    as.data.frame()
+  pubmed_data2<- rbind(pubmed_data2, data.frame(gene_name, number, stringsAsFactors = FALSE))
 }
 ```
 
 **Save the data**
 
-```
+```Java
 write.csv(pubmed_data1, "/Users/Desktop/pubmed_data06.04.2022", row.names = FALSE)
 ```
 
 **Load the following packages**
 
-```
+```Java
 library(cowplot)
 library(tidyverse)
 library(ggrepel)
@@ -52,7 +54,7 @@ library(ggrepel)
 
 **Generate the plot**
 
-```
+```Java
 p <- ggplot(pubmed_genes, aes(x= fct_reorder(gene_name, number), y =number),
             alpha = 0.02 )+
   geom_point() +
@@ -62,7 +64,7 @@ p <- ggplot(pubmed_genes, aes(x= fct_reorder(gene_name, number), y =number),
 ```
 
 **Label the X and Y axis**
-```
+```Java
 p1 <- p + 
   theme(axis.text.x=element_blank(),
         axis.ticks.x = element_blank())+
@@ -71,7 +73,7 @@ p1 <- p +
 ```
 **Mark gene names with different color and label them**
 
-```
+```Java
 p2 <- p1 + geom_text_repel(aes(label=ifelse((pubmed_genes$number> 25000), gene_name, "")))
 
 ```
@@ -81,7 +83,7 @@ p2 <- p1 + geom_text_repel(aes(label=ifelse((pubmed_genes$number> 25000), gene_n
 
 **Create the interactive plot**
 
-```
+```Java
 library(plotly)
 library(htmlwidgets)
 
