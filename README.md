@@ -27,13 +27,13 @@ pubmed_data <- data.frame()
 **Start downloading the number of articles per human gene. This process depends on the speed of the internet.**
 
 ```Java
-for(i in genelist){
+for(i in allgenes){
   link <- paste0("https://pubmed.ncbi.nlm.nih.gov/?term=", i,"&sort=date")
   page <- read_html(link)
   gene_name <- i 
   number <- page %>% html_nodes("span.value") %>% html_text() %>% 
     replace(!nzchar(number), NA)
-  pubmed_data2<- rbind(pubmed_data2, data.frame(gene_name, number, stringsAsFactors = FALSE))
+  pubmed_data<- rbind(pubmed_data, data.frame(gene_name, number, stringsAsFactors = FALSE))
 }
 ```
 
